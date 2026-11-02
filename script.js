@@ -402,13 +402,13 @@
         const topBannerWrap = document.getElementById("top-banner-wrap");
         if (topBannerWrap) {
             if (topBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
-                topBannerWrap.style.display = "block";
+                topBannerWrap.style.display = "flex";
             } else if (cfg.adsterra?.topBannerCode && cfg.adsterra.topBannerCode.trim()) {
-                topBannerWrap.style.display = "block";
+                topBannerWrap.style.display = "flex";
                 topBannerWrap.innerHTML = "";
                 injectExecutableCode(topBannerWrap, cfg.adsterra.topBannerCode);
             } else if (cfg.personalAds?.topBanner?.enabled) {
-                topBannerWrap.style.display = "block";
+                topBannerWrap.style.display = "flex";
                 const pBanner = cfg.personalAds.topBanner;
                 topBannerWrap.innerHTML = `
                     <a href="${pBanner.targetUrl || activeLink}" target="_blank" rel="noopener noreferrer">
@@ -423,14 +423,14 @@
         // বটম ব্যানার স্লট
         const bottomBannerWrap = document.getElementById("bottom-banner-wrap");
         if (bottomBannerWrap) {
-            if (bottomBannerWrap.querySelector('a[href*="directyp.org"]')) {
-                bottomBannerWrap.style.display = "block";
+            if (bottomBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
+                bottomBannerWrap.style.display = "flex";
             } else if (cfg.adsterra?.bottomBannerCode && cfg.adsterra.bottomBannerCode.trim()) {
-                bottomBannerWrap.style.display = "block";
+                bottomBannerWrap.style.display = "flex";
                 bottomBannerWrap.innerHTML = "";
                 injectExecutableCode(bottomBannerWrap, cfg.adsterra.bottomBannerCode);
             } else if (cfg.personalAds?.bottomBanner?.enabled) {
-                bottomBannerWrap.style.display = "block";
+                bottomBannerWrap.style.display = "flex";
                 const bBanner = cfg.personalAds.bottomBanner;
                 bottomBannerWrap.innerHTML = `
                     <a href="${bBanner.targetUrl || activeLink}" target="_blank" rel="noopener noreferrer">

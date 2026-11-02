@@ -147,11 +147,43 @@ body {
     margin: 16px auto;
     text-align: center;
     max-width: 100%;
-    overflow: hidden;
     border-radius: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    background: rgba(255, 255, 255, 0.02);
-    padding: 4px;
+    background: transparent;
+    padding: 0;
+}
+
+/* Responsive 728x90 Banner Containers */
+.banner-728x90-container {
+    width: 100%;
+    max-width: 728px;
+    margin: 16px auto;
+    text-align: center;
+    min-height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+.banner-728x90-container iframe {
+    max-width: 100% !important;
+    display: block !important;
+    margin: 0 auto !important;
+    border: none !important;
+}
+
+@media (max-width: 768px) {
+    .banner-728x90-container {
+        scrollbar-width: none;
+    }
+    .banner-728x90-container::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .ad-banner-slot a {
