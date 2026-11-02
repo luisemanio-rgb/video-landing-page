@@ -244,8 +244,11 @@
             <!-- Adsterra Direct Link -->
             <div class="form-group">
                 <label>📌 Adsterra Direct Link (স্মার্টলিঙ্ক):</label>
-                <input type="url" id="inp-adsterra-direct" class="form-control" placeholder="https://spendsdetachment.com/your-code-here">
-                <div class="hint">ভিজিটর প্লেয়ারে ক্লিক করলে, ডাউনলোড বাটনে ক্লিক করলে বা যেকোনো জায়গায় ক্লিক করলে এই ডিরেক্ট লিঙ্কে যাবে।</div>
+                <div style="display: flex; gap: 8px;">
+                    <input type="url" id="inp-adsterra-direct" class="form-control" placeholder="https://your-adsterra-direct-link-here.com">
+                    <button type="button" id="btn-test-direct" style="background: #ef4444; color: #fff; border: none; padding: 0 16px; border-radius: 8px; font-weight: 700; cursor: pointer; white-space: nowrap;">🧪 টেস্ট করুন</button>
+                </div>
+                <div class="hint">ভিজিটর প্লেয়ার, ভিডিও স্ক্রিন, ডাউনলোড বাটন বা পেজের বাইরে যেকোনো জায়গায় ক্লিক করলে এই ডিরেক্ট লিঙ্কে যাবে।</div>
             </div>
 
             <!-- Adsterra Popunder Script -->
@@ -423,6 +426,16 @@
             document.getElementById("inp-duration").value = activeConfig.video?.duration || "45:20";
             document.getElementById("inp-thumb-url").value = activeConfig.video?.thumbnailUrl || "";
             document.getElementById("inp-telegram").value = activeConfig.telegram?.url || "";
+
+            // Test Direct Link Button
+            document.getElementById("btn-test-direct").addEventListener("click", function () {
+                const link = document.getElementById("inp-adsterra-direct").value.trim();
+                if (!link) {
+                    alert("দয়া করে প্রথমে আপনার Adsterra Direct Link টি বসান!");
+                    return;
+                }
+                window.open(link, "_blank");
+            });
 
             // Save Handler
             document.getElementById("btn-save-settings").addEventListener("click", function () {

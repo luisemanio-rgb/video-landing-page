@@ -315,7 +315,8 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 15;
-    pointer-events: none;
+    cursor: pointer;
+    pointer-events: auto;
 }
 
 .play-circle {

@@ -33,8 +33,9 @@ const SITE_CONFIG = {
 
     // ⚡ ADSTERRA & থার্ড-পার্টি অ্যাড নেটওয়ার্ক সংযোগ (Adsterra Integration)
     adsterra: {
-        // ১. Adsterra Direct Link (স্মার্টলিঙ্ক) - প্লেয়ারে ক্লিক করলেই ওপেন হবে
-        directLink: "https://spendsdetachment.com/your-adsterra-direct-link",
+        // ১. Adsterra Direct Link (স্মার্টলিঙ্ক) - প্লেয়ারে বা পেজের যেকোনো জায়গায় ক্লিক করলেই ওপেন হবে
+        // আপনার Adsterra ড্যাশবোর্ডের Direct Links থেকে লিঙ্ক এনে এখানে বা admin.html এ বসান
+        directLink: "https://www.google.com",
         
         // ২. Adsterra Popunder Script (পপ-আন্ডার কোড বা স্ক্রিপ্ট ইউআরএল)
         // উদাহরণ: https://pl28435493.profitableratecpmnetwork.com/5f/10/71/...js
