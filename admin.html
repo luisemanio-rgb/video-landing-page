@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রো অ্যাডমিন প্যানেল - ব্যক্তিগত বিজ্ঞাপন ও ভিডিও সেটিংস</title>
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #111827;
+            --primary: #3b82f6;
+            --success: #10b981;
+            --danger: #ef4444;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border: #1f2937;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 24px 16px;
+            line-height: 1.6;
+        }
+
+        .admin-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header-title h1 {
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-view-site {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: opacity 0.2s;
+        }
+
+        .btn-view-site:hover {
+            opacity: 0.9;
+        }
+
+        .card-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .card-header h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #60a5fa;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .form-group .hint {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: #0b0f19;
+            border: 1px solid var(--border);
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 600px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #374151;
+            color: #e5e7eb;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .banner-unit-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #1f2937;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .alert-box {
+            display: none;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid #10b981;
+            color: #34d399;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-wrap">
+        <!-- Header -->
+        <div class="header-bar">
+            <div class="header-title">
+                <h1>👑 প্রো অ্যাডমিন প্যানেল</h1>
+                <p style="font-size: 13px; color: var(--text-muted);">পার্সোনাল অ্যাড ও ভিডিও কন্টেন্ট কন্ট্রোল ড্যাশবোর্ড</p>
+            </div>
+            <a href="index.html" target="_blank" class="btn-view-site">
+                ▶ লাইভ ওয়েবসাইট দেখুন
+            </a>
+        </div>
+
+        <div id="save-alert" class="alert-box">
+            ✅ সেটিংস সফলভাবে সেভ করা হয়েছে! ওয়েবসাইটে পরিবর্তন এখনই কার্যকর হয়েছে।
+        </div>
+
+        <!-- Section 1: Main Direct Ad / Popunder Settings -->
+        <div class="card-box">
+            <div class="card-header">
+                <h2>🎯 ১. ডিরেক্ট পার্সোনাল অ্যাড (Direct Ad / Popunder Link)</h2>
+            </div>
+            <div class="form-group">
+                <label>ভিডিও প্লেয়ারে ক্লিক করলে যে লিঙ্কটি ওপেন হবে (Direct Ad URL):</label>
+                <input type="url" id="inp-direct-ad" class="form-control" placeholder="https://your-cpa-link.com or personal offer">
+                <div class="hint">এখানে আপনার নিজের CPA অফার, অ্যাফিলিয়েট লিঙ্ক, টেলিগ্রাম লিংক বা ব্লগের লিংক দিন। প্লেয়ারে ক্লিক করলেই এটি ওপেন হবে।</div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>অ্যাড খোলার মোড (Click Mode):</label>
+                    <select id="inp-click-mode" class="form-control">
+                        <option value="always">Always (প্রতিটি ক্লিকেই ওপেন হবে)</option>
+                        <option value="first-click">First Click Only (প্রথম ক্লিকে একবার)</option>
+                        <option value="every-2-clicks">Every 2 Clicks (প্রতি ২ ক্লিকে ১ বার)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>নতুন ট্যাবে ওপেন হবে কি?</label>
+                    <select id="inp-new-tab" class="form-control">
+                        <option value="true">হ্যাঁ, নতুন ট্যাবে (New Tab _blank)</option>
+                        <option value="false">না, একই পেজে রিডাইরেক্ট (Same Page _self)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Human Verification / Content Locker -->
+        <div class="card-box">
+            <div class="card-header">
+                <h2>🛡️ ২. হিউম্যান ভেরিফিকেশন ও স্পন্সরড অফার লকার</h2>
+            </div>
+            <div class="form-group">
+                <label>লকার সক্রিয় রাখবেন কি?</label>
+                <select id="inp-locker-enable" class="form-control">
+                    <option value="true">সক্রিয় (Enabled - দেখাবে)</option>
+                    <option value="false">নিষ্ক্রিয় (Disabled - বন্ধ থাকবে)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>স্পন্সরড অফারের লিঙ্ক (Sponsored Offer URL):</label>
+                <input type="url" id="inp-locker-url" class="form-control" placeholder="https://your-sponsored-cpa-offer.com">
+                <div class="hint">ব্যবহারকারী ভেরিফাই চেকবক্স বা বাটনে ক্লিক করলে এই অফার পেজটি ওপেন হবে।</div>
+            </div>
+            <div class="form-group">
+                <label>অফারের লেখার বার্তা (Sponsored Offer Text):</label>
+                <input type="text" id="inp-locker-text" class="form-control">
+            </div>
+        </div>
+
+        <!-- Section 3: Banner Ads Settings -->
+        <div class="card-box">
+            <div class="card-header">
+                <h2>🖼️ ৩. ব্যানার বিজ্ঞাপন স্লট (Personal Banner Ads)</h2>
+            </div>
+            
+            <!-- Top Banner -->
+            <div class="banner-unit-box">
+                <strong style="color: #38bdf8; display: block; margin-bottom: 8px;">টপ ব্যানার (Top Banner - 728x90)</strong>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>ব্যানার ছবির লিংক (Image URL):</label>
+                        <input type="url" id="inp-top-banner-img" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ক্লিক করলে যে লিংকে যাবে (Target URL):</label>
+                        <input type="url" id="inp-top-banner-target" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Banner -->
+            <div class="banner-unit-box">
+                <strong style="color: #34d399; display: block; margin-bottom: 8px;">বটম ব্যানার (Bottom Banner - 728x90)</strong>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>ব্যানার ছবির লিংক (Image URL):</label>
+                        <input type="url" id="inp-bot-banner-img" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>ক্লিক করলে যে লিংকে যাবে (Target URL):</label>
+                        <input type="url" id="inp-bot-banner-target" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Video Details Settings -->
+        <div class="card-box">
+            <div class="card-header">
+                <h2>🎬 ৪. ভিডিওর তথ্য ও থাম্বনেইল</h2>
+            </div>
+            <div class="form-group">
+                <label>ভিডিওর নাম (Video Title):</label>
+                <input type="text" id="inp-video-title" class="form-control">
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>চ্যানেলের নাম (Channel Name):</label>
+                    <input type="text" id="inp-channel-name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>ভিডিওর সময়কাল (Duration e.g. 45:20):</label>
+                    <input type="text" id="inp-duration" class="form-control">
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>ভিউ সংখ্যা (Views count e.g. 1.8M Views):</label>
+                    <input type="text" id="inp-views" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>টেলিগ্রাম লিঙ্ক (VIP Group Link):</label>
+                    <input type="url" id="inp-telegram" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>ভিডিও থাম্বনেইল ছবির লিংক (Thumbnail Image URL):</label>
+                <input type="url" id="inp-thumb-url" class="form-control">
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div style="margin-bottom: 40px;">
+            <button class="btn-submit" id="btn-save-settings">
+                💾 সেটিংস সেভ করুন (Save Settings)
+            </button>
+            <button class="btn-secondary" id="btn-export-code">
+                📋 config.js কোড হিসেবে কপি করুন
+            </button>
+        </div>
+    </div>
+
+    <!-- Script to manage local config -->
+    <script src="config.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let activeConfig = SITE_CONFIG;
+            try {
+                const saved = localStorage.getItem("SMARTVIDEO_CONFIG");
+                if (saved) activeConfig = JSON.parse(saved);
+            } catch(e) {}
+
+            // Populate Form
+            document.getElementById("inp-direct-ad").value = activeConfig.personalAds?.directAdUrl || "";
+            document.getElementById("inp-click-mode").value = activeConfig.personalAds?.clickMode || "always";
+            document.getElementById("inp-new-tab").value = activeConfig.personalAds?.openInNewTab ? "true" : "false";
+
+            // Locker
+            document.getElementById("inp-locker-enable").value = activeConfig.personalAds?.contentLocker?.enabled ? "true" : "false";
+            document.getElementById("inp-locker-url").value = activeConfig.personalAds?.contentLocker?.sponsoredOfferUrl || "";
+            document.getElementById("inp-locker-text").value = activeConfig.personalAds?.contentLocker?.sponsoredBoxText || "";
+
+            // Banners
+            document.getElementById("inp-top-banner-img").value = activeConfig.personalAds?.topBanner?.imageUrl || "";
+            document.getElementById("inp-top-banner-target").value = activeConfig.personalAds?.topBanner?.targetUrl || "";
+            document.getElementById("inp-bot-banner-img").value = activeConfig.personalAds?.bottomBanner?.imageUrl || "";
+            document.getElementById("inp-bot-banner-target").value = activeConfig.personalAds?.bottomBanner?.targetUrl || "";
+
+            // Video Info
+            document.getElementById("inp-video-title").value = activeConfig.video?.title || "";
+            document.getElementById("inp-channel-name").value = activeConfig.video?.channelName || "";
+            document.getElementById("inp-duration").value = activeConfig.video?.duration || "45:20";
+            document.getElementById("inp-views").value = activeConfig.video?.views || "1.8M Views";
+            document.getElementById("inp-thumb-url").value = activeConfig.video?.thumbnailUrl || "";
+            document.getElementById("inp-telegram").value = activeConfig.telegram?.url || "";
+
+            // Save Handler
+            document.getElementById("btn-save-settings").addEventListener("click", function () {
+                activeConfig.personalAds.directAdUrl = document.getElementById("inp-direct-ad").value;
+                activeConfig.personalAds.clickMode = document.getElementById("inp-click-mode").value;
+                activeConfig.personalAds.openInNewTab = document.getElementById("inp-new-tab").value === "true";
+
+                if (!activeConfig.personalAds.contentLocker) activeConfig.personalAds.contentLocker = {};
+                activeConfig.personalAds.contentLocker.enabled = document.getElementById("inp-locker-enable").value === "true";
+                activeConfig.personalAds.contentLocker.sponsoredOfferUrl = document.getElementById("inp-locker-url").value;
+                activeConfig.personalAds.contentLocker.sponsoredBoxText = document.getElementById("inp-locker-text").value;
+
+                if (!activeConfig.personalAds.topBanner) activeConfig.personalAds.topBanner = { enabled: true };
+                activeConfig.personalAds.topBanner.imageUrl = document.getElementById("inp-top-banner-img").value;
+                activeConfig.personalAds.topBanner.targetUrl = document.getElementById("inp-top-banner-target").value;
+
+                if (!activeConfig.personalAds.bottomBanner) activeConfig.personalAds.bottomBanner = { enabled: true };
+                activeConfig.personalAds.bottomBanner.imageUrl = document.getElementById("inp-bot-banner-img").value;
+                activeConfig.personalAds.bottomBanner.targetUrl = document.getElementById("inp-bot-banner-target").value;
+
+                activeConfig.video.title = document.getElementById("inp-video-title").value;
+                activeConfig.video.channelName = document.getElementById("inp-channel-name").value;
+                activeConfig.video.duration = document.getElementById("inp-duration").value;
+                activeConfig.video.views = document.getElementById("inp-views").value;
+                activeConfig.video.thumbnailUrl = document.getElementById("inp-thumb-url").value;
+
+                if (!activeConfig.telegram) activeConfig.telegram = { enabled: true };
+                activeConfig.telegram.url = document.getElementById("inp-telegram").value;
+
+                localStorage.setItem("SMARTVIDEO_CONFIG", JSON.stringify(activeConfig));
+
+                const alertBox = document.getElementById("save-alert");
+                alertBox.style.display = "block";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                setTimeout(() => {
+                    alertBox.style.display = "none";
+                }, 4000);
+            });
+
+            // Export Code Handler
+            document.getElementById("btn-export-code").addEventListener("click", function () {
+                const code = "const SITE_CONFIG = " + JSON.stringify(activeConfig, null, 4) + ";";
+                navigator.clipboard.writeText(code).then(() => {
+                    alert("কনফিগ কোড ক্লিপবোর্ডে কপি হয়েছে! আপনি চাইলে এটি config.js ফাইলে পেস্ট করে দিতে পারেন।");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
