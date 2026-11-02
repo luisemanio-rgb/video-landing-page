@@ -126,7 +126,7 @@ const SITE_CONFIG = {
 
     // টেলিগ্রাম চ্যানেল বাটন
     telegram: {
-        enabled: true,
+        enabled: false,
         text: "Join VIP Group",
         url: "https://t.me/your_telegram_channel"
     },

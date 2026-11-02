@@ -866,27 +866,7 @@ input:checked + .slider:before {
 
 /* Floating Telegram Button */
 .floating-telegram-btn {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: linear-gradient(135deg, #0284c7, #0369a1);
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 30px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
-    z-index: 999;
-    transition: all 0.25s ease;
-}
-
-.floating-telegram-btn:hover {
-    transform: scale(1.06);
-    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.7);
+    display: none !important;
 }
 
 /* Toast Message */
