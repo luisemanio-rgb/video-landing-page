@@ -45,22 +45,28 @@ const SITE_CONFIG = {
     // ⚡ ADSTERRA & থার্ড-পার্টি অ্যাড নেটওয়ার্ক সংযোগ (Adsterra Integration)
     adsterra: {
         // ১. Adsterra Direct Link (স্মার্টলিঙ্ক) - প্লেয়ারে বা পেজের যেকোনো জায়গায় ক্লিক করলেই ওপেন হবে
-        // আপনার Adsterra ড্যাশবোর্ডের Direct Links থেকে লিঙ্ক এনে এখানে বা admin.html এ বসান
-        directLink: "https://www.google.com",
+        directLink: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444",
         
         // ২. Adsterra Popunder Script (পপ-আন্ডার কোড বা স্ক্রিপ্ট ইউআরএল)
-        // উদাহরণ: https://pl28435493.profitableratecpmnetwork.com/5f/10/71/...js
-        popunderScript: "",
+        popunderScript: "https://aarems.org/1/3b8e42d77d3d3f17fb0f4ef9e674fea9",
 
         // ৩. Adsterra Social Bar Script (ইন-পেজ পুশ ব্যানার)
-        socialBarScript: "",
+        socialBarScript: "https://bancadeltempoidea.org/14/04e1541cb67dbab104425e7bc5e5386d",
 
         // ৪. Adsterra Native Banner Code (নেটিভ ব্যানার কোড)
-        // উদাহরণ: <script ...></script><div id="container-..."></div>
-        nativeBannerCode: "",
+        nativeBannerCode: `<script async="async" data-cfasync="false" src="https://bancadeltempoidea.org/21/2fe6ac55b83f46667a354ec8d8daa85b"></script><div id="container-2fe6ac55b83f46667a354ec8d8daa85b"></div>`,
 
         // ৫. Adsterra 728x90 Top Banner কোড (অথবা ছবি/লিংক)
-        topBannerCode: "",
+        topBannerCode: `<script type="text/javascript">
+  atOptions = {
+    'key' : '837107b17353a960e63b27ec39c60fbd',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script type="text/javascript" src="https://bancadeltempoidea.org/22/837107b17353a960e63b27ec39c60fbd"></script>`,
 
         // ৬. Adsterra 728x90 Bottom Banner কোড (অথবা ছবি/লিংক)
         bottomBannerCode: "",
@@ -84,22 +90,22 @@ const SITE_CONFIG = {
             sponsoredBoxHeading: "🎁 স্পন্সরড প্রিমিয়াম অফার",
             sponsoredBoxText: "👑 স্পন্সরড লিংকে সাইন-আপ করে ৩০ সেকেন্ড সময় দিলেই পাবেন ২৪ ঘণ্টার অ্যাড-ফ্রি প্রিমিয়াম অভিজ্ঞতা!",
             sponsoredButtonText: "👤+ অফারটি গ্রহণ করুন ও ভিডিও দেখুন",
-            sponsoredOfferUrl: "https://spendsdetachment.com/your-adsterra-direct-link"
+            sponsoredOfferUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
         },
 
         // কাস্টম টপ ব্যানার (যদি Adsterra কোড খালি থাকে তবে এটি দেখাবে)
         topBanner: {
             enabled: true,
-            imageUrl: "https://via.placeholder.com/728x90/111827/38bdf8?text=Adsterra+or+Personal+Top+Banner+(728x90)",
-            targetUrl: "https://spendsdetachment.com/your-adsterra-direct-link",
+            imageUrl: "https://via.placeholder.com/728x90/111827/38bdf8?text=WATCH+EXCLUSIVE+STREAM+(CLICK+HERE)",
+            targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444",
             altText: "Special Offer"
         },
 
         // কাস্টম বটম ব্যানার
         bottomBanner: {
             enabled: true,
-            imageUrl: "https://via.placeholder.com/728x90/111827/22c55e?text=Adsterra+or+Personal+Bottom+Banner+(728x90)",
-            targetUrl: "https://spendsdetachment.com/your-adsterra-direct-link",
+            imageUrl: "https://via.placeholder.com/728x90/111827/22c55e?text=WATCH+EXCLUSIVE+STREAM+(CLICK+HERE)",
+            targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444",
             altText: "Exclusive Promo"
         },
 
@@ -110,28 +116,28 @@ const SITE_CONFIG = {
                 title: "License casino. Paid me same day.",
                 badge: "PROMO",
                 imageUrl: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=300&q=80",
-                targetUrl: "https://spendsdetachment.com/your-adsterra-direct-link"
+                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
             },
             {
                 enabled: true,
                 title: "Live chat with models near you",
                 badge: "HOT",
                 imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80",
-                targetUrl: "https://spendsdetachment.com/your-adsterra-direct-link"
+                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
             },
             {
                 enabled: true,
                 title: "Download Fast VPN & Stream 4K",
                 badge: "FREE",
                 imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=300&q=80",
-                targetUrl: "https://spendsdetachment.com/your-adsterra-direct-link"
+                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
             },
             {
                 enabled: true,
                 title: "Claim 100 Free Spins Instant",
                 badge: "BONUS",
                 imageUrl: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=300&q=80",
-                targetUrl: "https://spendsdetachment.com/your-adsterra-direct-link"
+                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
             }
         ]
     },

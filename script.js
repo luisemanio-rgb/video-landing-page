@@ -24,7 +24,7 @@
             if (saved) {
                 const parsed = JSON.parse(saved);
                 const link = parsed.adsterra?.directLink || parsed.personalAds?.directAdUrl;
-                if (link && link.trim() && !link.includes("your-adsterra-direct-link") && !link.includes("your-personal-ad-link")) {
+                if (link && link.trim() && !link.includes("your-adsterra-direct-link") && !link.includes("your-personal-ad-link") && !link.includes("google.com")) {
                     return link.trim();
                 }
             }
@@ -33,11 +33,11 @@
         // গ. config.js এর ডিফল্ট কনফিগ চেক
         const cfg = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG : {};
         const cfgLink = cfg.adsterra?.directLink || cfg.personalAds?.directAdUrl || "";
-        if (cfgLink && cfgLink.trim()) {
+        if (cfgLink && cfgLink.trim() && !cfgLink.includes("google.com")) {
             return cfgLink.trim();
         }
 
-        return "https://www.google.com";
+        return "https://directyp.org/4/c877086a067a30be2593e80b69c2c444";
     }
 
     // ২. পপ-আপ ব্লকার বাইপাস করে ১০০% নিশ্চিতভাবে নতুন ট্যাবে অ্যাড ওপেন করা
@@ -268,14 +268,22 @@
         const ads = cfg.adsterra;
         if (!ads) return;
 
-        // Popunder Script
+        // Popunder Script (যদি index.html-এ আগে থেকে না থাকে)
         if (ads.popunderScript && ads.popunderScript.trim()) {
-            injectExecutableCode(document.head, ads.popunderScript);
+            const hasPopunder = document.querySelector('script[src*="aarems.org"]') || 
+                                document.querySelector(`script[src*="${ads.popunderScript}"]`);
+            if (!hasPopunder) {
+                injectExecutableCode(document.head, ads.popunderScript);
+            }
         }
 
-        // Social Bar Script
+        // Social Bar Script (যদি index.html-এ আগে থেকে না থাকে)
         if (ads.socialBarScript && ads.socialBarScript.trim()) {
-            injectExecutableCode(document.body, ads.socialBarScript);
+            const hasSocialBar = document.querySelector('script[src*="04e1541cb67dbab104425e7bc5e5386d"]') || 
+                                 document.querySelector(`script[src*="${ads.socialBarScript}"]`);
+            if (!hasSocialBar) {
+                injectExecutableCode(document.body, ads.socialBarScript);
+            }
         }
     }
 
@@ -393,7 +401,9 @@
         // টপ ব্যানার স্লট
         const topBannerWrap = document.getElementById("top-banner-wrap");
         if (topBannerWrap) {
-            if (cfg.adsterra?.topBannerCode && cfg.adsterra.topBannerCode.trim()) {
+            if (topBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
+                topBannerWrap.style.display = "block";
+            } else if (cfg.adsterra?.topBannerCode && cfg.adsterra.topBannerCode.trim()) {
                 topBannerWrap.style.display = "block";
                 topBannerWrap.innerHTML = "";
                 injectExecutableCode(topBannerWrap, cfg.adsterra.topBannerCode);
@@ -413,7 +423,9 @@
         // বটম ব্যানার স্লট
         const bottomBannerWrap = document.getElementById("bottom-banner-wrap");
         if (bottomBannerWrap) {
-            if (cfg.adsterra?.bottomBannerCode && cfg.adsterra.bottomBannerCode.trim()) {
+            if (bottomBannerWrap.querySelector('a[href*="directyp.org"]')) {
+                bottomBannerWrap.style.display = "block";
+            } else if (cfg.adsterra?.bottomBannerCode && cfg.adsterra.bottomBannerCode.trim()) {
                 bottomBannerWrap.style.display = "block";
                 bottomBannerWrap.innerHTML = "";
                 injectExecutableCode(bottomBannerWrap, cfg.adsterra.bottomBannerCode);
@@ -433,7 +445,9 @@
         // Adsterra Native Banner স্লট
         const nativeSlot = document.getElementById("adsterra-native-slot");
         if (nativeSlot) {
-            if (cfg.adsterra?.nativeBannerCode && cfg.adsterra.nativeBannerCode.trim()) {
+            if (nativeSlot.querySelector('#container-2fe6ac55b83f46667a354ec8d8daa85b')) {
+                nativeSlot.style.display = "block";
+            } else if (cfg.adsterra?.nativeBannerCode && cfg.adsterra.nativeBannerCode.trim()) {
                 nativeSlot.style.display = "block";
                 nativeSlot.innerHTML = "";
                 injectExecutableCode(nativeSlot, cfg.adsterra.nativeBannerCode);
