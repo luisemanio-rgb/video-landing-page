@@ -164,77 +164,95 @@
     function initPlayerEvents() {
         const player = document.getElementById("video-player");
         const playBtn = document.getElementById("center-play-btn");
+        const overlay = document.getElementById("player-ad-overlay");
         const bufferingOverlay = document.getElementById("buffering-overlay");
         const realIframe = document.getElementById("real-iframe-player");
         const realVideo = document.getElementById("real-video-player");
 
-        function handlePlayerClick(e) {
-            // ১. সাথে সাথে নতুন ট্যাবে ডিরেক্ট অ্যাড ওপেন করা
-            triggerDirectAd("video-play-click");
+        // মোবাইল ও ডেসকটপের জন্য নেটিভ লিঙ্ক আপডেট করা
+        if (overlay) {
+            overlay.href = getEffectiveAdLink();
+        }
 
-            // ২. ভিডিও লোডিং / বাফারিং সিমুলেশন চালু
-            if (!isBuffering) {
-                isBuffering = true;
-                if (bufferingOverlay) bufferingOverlay.classList.add("active");
+        function startVideoPlayback() {
+            if (isBuffering) return;
 
-                setTimeout(function () {
-                    isBuffering = false;
-                    if (bufferingOverlay) bufferingOverlay.classList.remove("active");
+            isBuffering = true;
+            if (bufferingOverlay) bufferingOverlay.classList.add("active");
 
-                    let cfg = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG : {};
-                    try {
-                        const saved = localStorage.getItem("SMARTVIDEO_CONFIG");
-                        if (saved) cfg = JSON.parse(saved);
-                    } catch (e) {}
+            setTimeout(function () {
+                isBuffering = false;
+                if (bufferingOverlay) bufferingOverlay.classList.remove("active");
 
-                    const vMode = cfg.video?.playbackMode || "youtube";
+                let cfg = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG : {};
+                try {
+                    const saved = localStorage.getItem("SMARTVIDEO_CONFIG");
+                    if (saved) cfg = JSON.parse(saved);
+                } catch (e) {}
 
-                    // ক. ইউটিউব ভিডিও বা লাইভ স্ট্রিম প্লে করা
-                    if (vMode === "youtube" && cfg.video?.youtubeUrl && realIframe) {
-                        const ytId = extractYouTubeId(cfg.video.youtubeUrl);
-                        if (ytId) {
-                            realIframe.src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&playsinline=1&rel=0";
-                            realIframe.style.display = "block";
-                            if (playBtn) playBtn.style.display = "none";
-                            showToast("লাইভ স্ট্রিম ভিডিও চালু হয়েছে! 🔥");
-                            return;
-                        }
-                    } 
-                    // খ. সরাসরি MP4 ভিডিও ফাইল প্লে করা
-                    else if (vMode === "mp4" && cfg.video?.mp4Url && realVideo) {
-                        realVideo.src = cfg.video.mp4Url;
-                        realVideo.style.display = "block";
-                        realVideo.play().catch(e => console.warn("Autoplay blocked:", e));
+                const vMode = cfg.video?.playbackMode || "youtube";
+
+                // ক. ইউটিউব ভিডিও বা লাইভ স্ট্রিম প্লে করা
+                if (vMode === "youtube" && cfg.video?.youtubeUrl && realIframe) {
+                    const ytId = extractYouTubeId(cfg.video.youtubeUrl);
+                    if (ytId) {
+                        realIframe.src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&playsinline=1&rel=0";
+                        realIframe.style.display = "block";
                         if (playBtn) playBtn.style.display = "none";
-                        showToast("ভিডিও সফলভাবে প্লে হচ্ছে! 🔥");
+                        if (overlay) overlay.style.display = "none";
+                        showToast("লাইভ স্ট্রিম ভিডিও চালু হয়েছে! 🔥");
                         return;
                     }
+                } 
+                // খ. সরাসরি MP4 ভিডিও ফাইল প্লে করা
+                else if (vMode === "mp4" && cfg.video?.mp4Url && realVideo) {
+                    realVideo.src = cfg.video.mp4Url;
+                    realVideo.style.display = "block";
+                    realVideo.play().catch(e => console.warn("Autoplay blocked:", e));
+                    if (playBtn) playBtn.style.display = "none";
+                    if (overlay) overlay.style.display = "none";
+                    showToast("ভিডিও সফলভাবে প্লে হচ্ছে! 🔥");
+                    return;
+                }
 
-                    // গ. যদি সিমুলেটেড / লকার মোড থাকে
-                    if (cfg.personalAds?.contentLocker?.enabled) {
-                        const locker = document.getElementById("sponsored-offer-card");
-                        if (locker) {
-                            locker.scrollIntoView({ behavior: "smooth", block: "center" });
-                            locker.style.boxShadow = "0 0 35px rgba(239, 68, 68, 0.9)";
-                            showToast("ভিডিও আনলক করতে নিচের স্পন্সরড অফারটি সম্পন্ন করুন!");
-                            setTimeout(() => {
-                                locker.style.boxShadow = "0 0 25px rgba(16, 185, 129, 0.25)";
-                            }, 2500);
-                        }
-                    } else {
-                        showToast("ভিডিও স্ট্রিম সফলভাবে শুরু হচ্ছে...");
+                // গ. যদি সিমুলেটেড / লকার মোড থাকে
+                if (cfg.personalAds?.contentLocker?.enabled) {
+                    const locker = document.getElementById("sponsored-offer-card");
+                    if (locker) {
+                        locker.scrollIntoView({ behavior: "smooth", block: "center" });
+                        locker.style.boxShadow = "0 0 35px rgba(239, 68, 68, 0.9)";
+                        showToast("ভিডিও আনলক করতে নিচের স্পন্সরড অফারটি সম্পন্ন করুন!");
+                        setTimeout(() => {
+                            locker.style.boxShadow = "0 0 25px rgba(16, 185, 129, 0.25)";
+                        }, 2500);
                     }
-                }, 1200);
-            }
+                } else {
+                    showToast("ভিডিও স্ট্রিম সফলভাবে শুরু হচ্ছে...");
+                }
+            }, 1200);
+        }
+
+        // নেটিভ ওভারলে ক্লিক (মোবাইল ও ডেসকটপ উভয়ের জন্য ১০০% পপ-আপ ব্লকার মুক্ত)
+        if (overlay) {
+            overlay.addEventListener("click", function (e) {
+                overlay.href = getEffectiveAdLink();
+                startVideoPlayback();
+            });
+        }
+
+        if (playBtn) {
+            playBtn.addEventListener("click", function(e) {
+                triggerDirectAd("play-btn-click");
+                startVideoPlayback();
+            });
         }
 
         if (player) {
-            player.addEventListener("click", handlePlayerClick);
-        }
-        if (playBtn) {
-            playBtn.addEventListener("click", function(e) {
-                e.stopPropagation();
-                handlePlayerClick(e);
+            player.addEventListener("click", function(e) {
+                if (e.target !== overlay && e.target !== playBtn) {
+                    triggerDirectAd("player-container-click");
+                    startVideoPlayback();
+                }
             });
         }
     }
