@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>প্রো অ্যাডমিন প্যানেল - ব্যক্তিগত বিজ্ঞাপন ও ভিডিও সেটিংস</title>
+    <title>প্রো অ্যাডমিন প্যানেল - Adsterra ও ব্যক্তিগত বিজ্ঞাপন সংযোগ</title>
     <style>
         :root {
             --bg-dark: #0b0f19;
@@ -11,6 +11,7 @@
             --primary: #3b82f6;
             --success: #10b981;
             --danger: #ef4444;
+            --adsterra-color: #ef4444;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --border: #1f2937;
@@ -31,7 +32,7 @@
         }
 
         .admin-wrap {
-            max-width: 900px;
+            max-width: 920px;
             margin: 0 auto;
         }
 
@@ -79,6 +80,11 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
+        .card-adsterra {
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            background: radial-gradient(circle at top right, rgba(239, 68, 68, 0.08), var(--bg-card) 60%);
+        }
+
         .card-header {
             display: flex;
             align-items: center;
@@ -92,6 +98,10 @@
             font-size: 17px;
             font-weight: 700;
             color: #60a5fa;
+        }
+
+        .card-adsterra .card-header h2 {
+            color: #f87171;
         }
 
         .form-group {
@@ -124,8 +134,18 @@
             transition: border-color 0.2s;
         }
 
+        textarea.form-control {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            resize: vertical;
+        }
+
         .form-control:focus {
             border-color: var(--primary);
+        }
+
+        .card-adsterra .form-control:focus {
+            border-color: #ef4444;
         }
 
         .grid-2 {
@@ -144,7 +164,7 @@
             background: linear-gradient(135deg, #2563eb, #1d4ed8);
             color: #fff;
             border: none;
-            padding: 12px 24px;
+            padding: 14px 24px;
             border-radius: 8px;
             font-size: 15px;
             font-weight: 700;
@@ -170,14 +190,6 @@
             width: 100%;
         }
 
-        .banner-unit-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid #1f2937;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
-
         .alert-box {
             display: none;
             background: rgba(16, 185, 129, 0.2);
@@ -190,6 +202,16 @@
             font-weight: 600;
             text-align: center;
         }
+
+        .badge-tag {
+            background: #ef4444;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
     </style>
 </head>
 <body>
@@ -198,8 +220,8 @@
         <!-- Header -->
         <div class="header-bar">
             <div class="header-title">
-                <h1>👑 প্রো অ্যাডমিন প্যানেল</h1>
-                <p style="font-size: 13px; color: var(--text-muted);">পার্সোনাল অ্যাড ও ভিডিও কন্টেন্ট কন্ট্রোল ড্যাশবোর্ড</p>
+                <h1>⚡ বিজ্ঞাপন নিয়ন্ত্রণ প্যানেল</h1>
+                <p style="font-size: 13px; color: var(--text-muted);">Adsterra (beta.publishers.adsterra.com) ও ব্যক্তিগত বিজ্ঞাপন ইন্টিগ্রেশন</p>
             </div>
             <a href="index.html" target="_blank" class="btn-view-site">
                 ▶ লাইভ ওয়েবসাইট দেখুন
@@ -210,19 +232,66 @@
             ✅ সেটিংস সফলভাবে সেভ করা হয়েছে! ওয়েবসাইটে পরিবর্তন এখনই কার্যকর হয়েছে।
         </div>
 
-        <!-- Section 1: Main Direct Ad / Popunder Settings -->
+        <!-- SECTION 1: ADSTERRA CONNECT (MAIN HIGHLIGHT) -->
+        <div class="card-box card-adsterra">
+            <div class="card-header">
+                <h2>🔥 ১. Adsterra বিজ্ঞাপন সংযোগ (Connect Adsterra) <span class="badge-tag">RECOMMENDED</span></h2>
+            </div>
+            <p style="font-size: 12px; color: #cbd5e1; margin-bottom: 14px;">
+                আপনার <strong>beta.publishers.adsterra.com</strong> অ্যাকাউন্ট থেকে ডিরেক্ট লিংক ও কোড এনে এখানে পেস্ট করুন:
+            </p>
+
+            <!-- Adsterra Direct Link -->
+            <div class="form-group">
+                <label>📌 Adsterra Direct Link (স্মার্টলিঙ্ক):</label>
+                <input type="url" id="inp-adsterra-direct" class="form-control" placeholder="https://spendsdetachment.com/your-code-here">
+                <div class="hint">ভিজিটর প্লেয়ারে ক্লিক করলে, ডাউনলোড বাটনে ক্লিক করলে বা যেকোনো জায়গায় ক্লিক করলে এই ডিরেক্ট লিঙ্কে যাবে।</div>
+            </div>
+
+            <!-- Adsterra Popunder Script -->
+            <div class="form-group">
+                <label>🌐 Adsterra Popunder Script (পপ-আন্ডার কোড বা স্ক্রিপ্ট লিঙ্ক):</label>
+                <textarea id="inp-adsterra-popunder" class="form-control" rows="2" placeholder='<script src="//pl28435493.profitableratecpmnetwork.com/...js"></script> অথবা স্ক্রিপ্ট লিঙ্ক'></textarea>
+                <div class="hint">Adsterra থেকে প্রাপ্ত সম্পূর্ণ Popunder কোড বা .js লিংকটি এখানে পেস্ট করুন। পেজ লোড হলেই স্বয়ংক্রিয়ভাবে ব্যাকগ্রাউন্ডে পপ-আন্ডার রান করবে।</div>
+            </div>
+
+            <!-- Adsterra Social Bar Script -->
+            <div class="form-group">
+                <label>🔔 Adsterra Social Bar Script (ইন-পেজ পুশ নোটিফিকেশন কোড):</label>
+                <textarea id="inp-adsterra-socialbar" class="form-control" rows="2" placeholder='<script src="//pl...invoke.js"></script>'></textarea>
+                <div class="hint">সোশ্যাল বার বা ইন-পেজ পুশ অ্যাড যা ভিজিটরের স্ক্রিনে নোটিফিকেশনের মতো শো করবে।</div>
+            </div>
+
+            <!-- Adsterra Native Banner Code -->
+            <div class="form-group">
+                <label>📰 Adsterra Native Banner Code (নেটিভ ব্যানার কোড):</label>
+                <textarea id="inp-adsterra-native" class="form-control" rows="3" placeholder='<script ... src="//pl...invoke.js"></script><div id="container-..."></div>'></textarea>
+                <div class="hint">ভিডিওর ঠিক নিচে নেটিভ ব্যানার দেখানোর জন্য সম্পূর্ণ Adsterra কোডটি এখানে পেস্ট করুন।</div>
+            </div>
+
+            <div class="grid-2">
+                <!-- Adsterra Top Banner Code -->
+                <div class="form-group">
+                    <label>🖼️ Adsterra 728x90 Top Banner কোড:</label>
+                    <textarea id="inp-adsterra-top-banner" class="form-control" rows="2" placeholder="<script ...></script>"></textarea>
+                </div>
+
+                <!-- Adsterra Bottom Banner Code -->
+                <div class="form-group">
+                    <label>🖼️ Adsterra 728x90 Bottom Banner কোড:</label>
+                    <textarea id="inp-adsterra-bot-banner" class="form-control" rows="2" placeholder="<script ...></script>"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: CLICK BEHAVIOR & LOCKER -->
         <div class="card-box">
             <div class="card-header">
-                <h2>🎯 ১. ডিরেক্ট পার্সোনাল অ্যাড (Direct Ad / Popunder Link)</h2>
-            </div>
-            <div class="form-group">
-                <label>ভিডিও প্লেয়ারে ক্লিক করলে যে লিঙ্কটি ওপেন হবে (Direct Ad URL):</label>
-                <input type="url" id="inp-direct-ad" class="form-control" placeholder="https://your-cpa-link.com or personal offer">
-                <div class="hint">এখানে আপনার নিজের CPA অফার, অ্যাফিলিয়েট লিঙ্ক, টেলিগ্রাম লিংক বা ব্লগের লিংক দিন। প্লেয়ারে ক্লিক করলেই এটি ওপেন হবে।</div>
+                <h2>🎯 ২. ক্লিক মোড ও হিউম্যান ভেরিফিকেশন লকার</h2>
             </div>
             <div class="grid-2">
                 <div class="form-group">
-                    <label>অ্যাড খোলার মোড (Click Mode):</label>
+                    <label>প্লেয়ারে অ্যাড খোলার মোড (Click Mode):</label>
                     <select id="inp-click-mode" class="form-control">
                         <option value="always">Always (প্রতিটি ক্লিকেই ওপেন হবে)</option>
                         <option value="first-click">First Click Only (প্রথম ক্লিকে একবার)</option>
@@ -230,76 +299,51 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>নতুন ট্যাবে ওপেন হবে কি?</label>
-                    <select id="inp-new-tab" class="form-control">
-                        <option value="true">হ্যাঁ, নতুন ট্যাবে (New Tab _blank)</option>
-                        <option value="false">না, একই পেজে রিডাইরেক্ট (Same Page _self)</option>
+                    <label>লকার সক্রিয় রাখবেন কি?</label>
+                    <select id="inp-locker-enable" class="form-control">
+                        <option value="true">সক্রিয় (Enabled - দেখাবে)</option>
+                        <option value="false">নিষ্ক্রিয় (Disabled - বন্ধ থাকবে)</option>
                     </select>
                 </div>
             </div>
-        </div>
-
-        <!-- Section 2: Human Verification / Content Locker -->
-        <div class="card-box">
-            <div class="card-header">
-                <h2>🛡️ ২. হিউম্যান ভেরিফিকেশন ও স্পন্সরড অফার লকার</h2>
+            <div class="form-group">
+                <label>স্পন্সরড অফারের লিঙ্ক (যদি খালি রাখেন, তবে Adsterra Direct Link কাজ করবে):</label>
+                <input type="url" id="inp-locker-url" class="form-control" placeholder="https://your-cpa-offer-link.com">
             </div>
             <div class="form-group">
-                <label>লকার সক্রিয় রাখবেন কি?</label>
-                <select id="inp-locker-enable" class="form-control">
-                    <option value="true">সক্রিয় (Enabled - দেখাবে)</option>
-                    <option value="false">নিষ্ক্রিয় (Disabled - বন্ধ থাকবে)</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>স্পন্সরড অফারের লিঙ্ক (Sponsored Offer URL):</label>
-                <input type="url" id="inp-locker-url" class="form-control" placeholder="https://your-sponsored-cpa-offer.com">
-                <div class="hint">ব্যবহারকারী ভেরিফাই চেকবক্স বা বাটনে ক্লিক করলে এই অফার পেজটি ওপেন হবে।</div>
-            </div>
-            <div class="form-group">
-                <label>অফারের লেখার বার্তা (Sponsored Offer Text):</label>
+                <label>লকারের লেখার বার্তা (Sponsored Offer Text):</label>
                 <input type="text" id="inp-locker-text" class="form-control">
             </div>
         </div>
 
-        <!-- Section 3: Banner Ads Settings -->
+        <!-- SECTION 3: PERSONAL CUSTOM BANNERS (FALLBACK) -->
         <div class="card-box">
             <div class="card-header">
-                <h2>🖼️ ৩. ব্যানার বিজ্ঞাপন স্লট (Personal Banner Ads)</h2>
+                <h2>🖼️ ৩. পার্সোনাল ব্যানার ইমেজ (Personal Banner Images)</h2>
             </div>
-            
-            <!-- Top Banner -->
-            <div class="banner-unit-box">
-                <strong style="color: #38bdf8; display: block; margin-bottom: 8px;">টপ ব্যানার (Top Banner - 728x90)</strong>
-                <div class="grid-2">
-                    <div class="form-group">
-                        <label>ব্যানার ছবির লিংক (Image URL):</label>
-                        <input type="url" id="inp-top-banner-img" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>ক্লিক করলে যে লিংকে যাবে (Target URL):</label>
-                        <input type="url" id="inp-top-banner-target" class="form-control">
-                    </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>কাস্টম টপ ব্যানার ছবি (Top Image URL):</label>
+                    <input type="url" id="inp-top-banner-img" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>কাস্টম টপ ব্যানার টার্গেট লিংক:</label>
+                    <input type="url" id="inp-top-banner-target" class="form-control">
                 </div>
             </div>
-
-            <!-- Bottom Banner -->
-            <div class="banner-unit-box">
-                <strong style="color: #34d399; display: block; margin-bottom: 8px;">বটম ব্যানার (Bottom Banner - 728x90)</strong>
-                <div class="grid-2">
-                    <div class="form-group">
-                        <label>ব্যানার ছবির লিংক (Image URL):</label>
-                        <input type="url" id="inp-bot-banner-img" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>ক্লিক করলে যে লিংকে যাবে (Target URL):</label>
-                        <input type="url" id="inp-bot-banner-target" class="form-control">
-                    </div>
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>কাস্টম বটম ব্যানার ছবি (Bottom Image URL):</label>
+                    <input type="url" id="inp-bot-banner-img" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>কাস্টম বটম ব্যানার টার্গেট লিংক:</label>
+                    <input type="url" id="inp-bot-banner-target" class="form-control">
                 </div>
             </div>
         </div>
 
-        <!-- Section 4: Video Details Settings -->
+        <!-- SECTION 4: VIDEO DETAILS -->
         <div class="card-box">
             <div class="card-header">
                 <h2>🎬 ৪. ভিডিওর তথ্য ও থাম্বনেইল</h2>
@@ -320,32 +364,27 @@
             </div>
             <div class="grid-2">
                 <div class="form-group">
-                    <label>ভিউ সংখ্যা (Views count e.g. 1.8M Views):</label>
-                    <input type="text" id="inp-views" class="form-control">
+                    <label>ভিডিও থাম্বনেইল ছবির লিংক (Thumbnail Image URL):</label>
+                    <input type="url" id="inp-thumb-url" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>টেলিগ্রাম লিঙ্ক (VIP Group Link):</label>
+                    <label>টেলিগ্রাম ভিআইপি গ্রুপ লিঙ্ক:</label>
                     <input type="url" id="inp-telegram" class="form-control">
                 </div>
             </div>
-            <div class="form-group">
-                <label>ভিডিও থাম্বনেইল ছবির লিংক (Thumbnail Image URL):</label>
-                <input type="url" id="inp-thumb-url" class="form-control">
-            </div>
         </div>
 
-        <!-- Actions -->
+        <!-- ACTIONS -->
         <div style="margin-bottom: 40px;">
             <button class="btn-submit" id="btn-save-settings">
                 💾 সেটিংস সেভ করুন (Save Settings)
             </button>
             <button class="btn-secondary" id="btn-export-code">
-                📋 config.js কোড হিসেবে কপি করুন
+                📋 config.js কোড হিসেবে কপি করুন (Export Code)
             </button>
         </div>
     </div>
 
-    <!-- Script to manage local config -->
     <script src="config.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -355,57 +394,72 @@
                 if (saved) activeConfig = JSON.parse(saved);
             } catch(e) {}
 
-            // Populate Form
-            document.getElementById("inp-direct-ad").value = activeConfig.personalAds?.directAdUrl || "";
-            document.getElementById("inp-click-mode").value = activeConfig.personalAds?.clickMode || "always";
-            document.getElementById("inp-new-tab").value = activeConfig.personalAds?.openInNewTab ? "true" : "false";
+            if (!activeConfig.adsterra) activeConfig.adsterra = {};
+            if (!activeConfig.personalAds) activeConfig.personalAds = {};
 
-            // Locker
+            // 1. Populate Adsterra Fields
+            document.getElementById("inp-adsterra-direct").value = activeConfig.adsterra?.directLink || activeConfig.personalAds?.directAdUrl || "";
+            document.getElementById("inp-adsterra-popunder").value = activeConfig.adsterra?.popunderScript || "";
+            document.getElementById("inp-adsterra-socialbar").value = activeConfig.adsterra?.socialBarScript || "";
+            document.getElementById("inp-adsterra-native").value = activeConfig.adsterra?.nativeBannerCode || "";
+            document.getElementById("inp-adsterra-top-banner").value = activeConfig.adsterra?.topBannerCode || "";
+            document.getElementById("inp-adsterra-bot-banner").value = activeConfig.adsterra?.bottomBannerCode || "";
+
+            // 2. Click Mode & Locker
+            document.getElementById("inp-click-mode").value = activeConfig.personalAds?.clickMode || "always";
             document.getElementById("inp-locker-enable").value = activeConfig.personalAds?.contentLocker?.enabled ? "true" : "false";
             document.getElementById("inp-locker-url").value = activeConfig.personalAds?.contentLocker?.sponsoredOfferUrl || "";
             document.getElementById("inp-locker-text").value = activeConfig.personalAds?.contentLocker?.sponsoredBoxText || "";
 
-            // Banners
+            // 3. Custom Banners
             document.getElementById("inp-top-banner-img").value = activeConfig.personalAds?.topBanner?.imageUrl || "";
             document.getElementById("inp-top-banner-target").value = activeConfig.personalAds?.topBanner?.targetUrl || "";
             document.getElementById("inp-bot-banner-img").value = activeConfig.personalAds?.bottomBanner?.imageUrl || "";
             document.getElementById("inp-bot-banner-target").value = activeConfig.personalAds?.bottomBanner?.targetUrl || "";
 
-            // Video Info
+            // 4. Video Details
             document.getElementById("inp-video-title").value = activeConfig.video?.title || "";
             document.getElementById("inp-channel-name").value = activeConfig.video?.channelName || "";
             document.getElementById("inp-duration").value = activeConfig.video?.duration || "45:20";
-            document.getElementById("inp-views").value = activeConfig.video?.views || "1.8M Views";
             document.getElementById("inp-thumb-url").value = activeConfig.video?.thumbnailUrl || "";
             document.getElementById("inp-telegram").value = activeConfig.telegram?.url || "";
 
             // Save Handler
             document.getElementById("btn-save-settings").addEventListener("click", function () {
-                activeConfig.personalAds.directAdUrl = document.getElementById("inp-direct-ad").value;
+                // Adsterra
+                activeConfig.adsterra.directLink = document.getElementById("inp-adsterra-direct").value.trim();
+                activeConfig.adsterra.popunderScript = document.getElementById("inp-adsterra-popunder").value.trim();
+                activeConfig.adsterra.socialBarScript = document.getElementById("inp-adsterra-socialbar").value.trim();
+                activeConfig.adsterra.nativeBannerCode = document.getElementById("inp-adsterra-native").value.trim();
+                activeConfig.adsterra.topBannerCode = document.getElementById("inp-adsterra-top-banner").value.trim();
+                activeConfig.adsterra.bottomBannerCode = document.getElementById("inp-adsterra-bot-banner").value.trim();
+
+                // Personal Ads Fallback
+                activeConfig.personalAds.directAdUrl = activeConfig.adsterra.directLink;
                 activeConfig.personalAds.clickMode = document.getElementById("inp-click-mode").value;
-                activeConfig.personalAds.openInNewTab = document.getElementById("inp-new-tab").value === "true";
 
                 if (!activeConfig.personalAds.contentLocker) activeConfig.personalAds.contentLocker = {};
                 activeConfig.personalAds.contentLocker.enabled = document.getElementById("inp-locker-enable").value === "true";
-                activeConfig.personalAds.contentLocker.sponsoredOfferUrl = document.getElementById("inp-locker-url").value;
-                activeConfig.personalAds.contentLocker.sponsoredBoxText = document.getElementById("inp-locker-text").value;
+                activeConfig.personalAds.contentLocker.sponsoredOfferUrl = document.getElementById("inp-locker-url").value.trim() || activeConfig.adsterra.directLink;
+                activeConfig.personalAds.contentLocker.sponsoredBoxText = document.getElementById("inp-locker-text").value.trim();
 
                 if (!activeConfig.personalAds.topBanner) activeConfig.personalAds.topBanner = { enabled: true };
-                activeConfig.personalAds.topBanner.imageUrl = document.getElementById("inp-top-banner-img").value;
-                activeConfig.personalAds.topBanner.targetUrl = document.getElementById("inp-top-banner-target").value;
+                activeConfig.personalAds.topBanner.imageUrl = document.getElementById("inp-top-banner-img").value.trim();
+                activeConfig.personalAds.topBanner.targetUrl = document.getElementById("inp-top-banner-target").value.trim();
 
                 if (!activeConfig.personalAds.bottomBanner) activeConfig.personalAds.bottomBanner = { enabled: true };
-                activeConfig.personalAds.bottomBanner.imageUrl = document.getElementById("inp-bot-banner-img").value;
-                activeConfig.personalAds.bottomBanner.targetUrl = document.getElementById("inp-bot-banner-target").value;
+                activeConfig.personalAds.bottomBanner.imageUrl = document.getElementById("inp-bot-banner-img").value.trim();
+                activeConfig.personalAds.bottomBanner.targetUrl = document.getElementById("inp-bot-banner-target").value.trim();
 
-                activeConfig.video.title = document.getElementById("inp-video-title").value;
-                activeConfig.video.channelName = document.getElementById("inp-channel-name").value;
-                activeConfig.video.duration = document.getElementById("inp-duration").value;
-                activeConfig.video.views = document.getElementById("inp-views").value;
-                activeConfig.video.thumbnailUrl = document.getElementById("inp-thumb-url").value;
+                // Video
+                activeConfig.video.title = document.getElementById("inp-video-title").value.trim();
+                activeConfig.video.channelName = document.getElementById("inp-channel-name").value.trim();
+                activeConfig.video.duration = document.getElementById("inp-duration").value.trim();
+                activeConfig.video.thumbnailUrl = document.getElementById("inp-thumb-url").value.trim();
 
+                // Telegram
                 if (!activeConfig.telegram) activeConfig.telegram = { enabled: true };
-                activeConfig.telegram.url = document.getElementById("inp-telegram").value;
+                activeConfig.telegram.url = document.getElementById("inp-telegram").value.trim();
 
                 localStorage.setItem("SMARTVIDEO_CONFIG", JSON.stringify(activeConfig));
 
