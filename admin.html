@@ -346,34 +346,64 @@
             </div>
         </div>
 
-        <!-- SECTION 4: VIDEO DETAILS -->
-        <div class="card-box">
+        <!-- SECTION 4: REAL VIDEO PLAYBACK & LIVESTREAM -->
+        <div class="card-box" style="border-color: #3b82f6;">
             <div class="card-header">
-                <h2>🎬 ৪. ভিডিওর তথ্য ও থাম্বনেইল</h2>
+                <h2 style="color: #60a5fa;">🎬 ৪. আসল ভিডিও প্লেব্যাক ও লাইভ স্ট্রিম (Real Video / Live Stream)</h2>
             </div>
+            
+            <div class="grid-2">
+                <div class="form-group">
+                    <label>ভিডিও চালানোর মোড (Playback Mode):</label>
+                    <select id="inp-playback-mode" class="form-control">
+                        <option value="youtube">YouTube Video / YouTube Live Stream (আসল প্লেব্যাক)</option>
+                        <option value="mp4">Direct MP4 Video File Link (সরাসরি ভিডিও ফাইল)</option>
+                        <option value="simulated">Simulated / Fake Player (বাফারিং ও শুধুই অ্যাড)</option>
+                    </select>
+                    <div class="hint">ক্লিক করলে অ্যাড ওপেন হবে এবং একই সাথে আসল ভিডিও বা লাইভ স্ট্রিম চালু হবে।</div>
+                </div>
+
+                <div class="form-group">
+                    <label>লাইভ স্ট্রিম ব্যাজ (🔴 LIVE STREAM):</label>
+                    <select id="inp-is-live" class="form-control">
+                        <option value="true">হ্যাঁ, 🔴 LIVE STREAM ব্যাজ দেখাবে</option>
+                        <option value="false">না, সাধারণ ভিডিও (ব্যাজ লুকানো থাকবে)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- YouTube / Live Stream URL -->
             <div class="form-group">
-                <label>ভিডিওর নাম (Video Title):</label>
+                <label>📺 YouTube Video বা Live Stream লিঙ্ক (URL):</label>
+                <input type="url" id="inp-youtube-url" class="form-control" placeholder="https://www.youtube.com/watch?v=... অথবা https://youtube.com/live/...">
+                <div class="hint">এখানে যেকোনো ইউটিউব ভিডিও বা ইউটিউব লাইভ স্ট্রিম লিঙ্ক পেস্ট করুন। প্লেয়ারে ক্লিক করলেই এই ভিডিওটি লাইভ চলবে।</div>
+            </div>
+
+            <!-- Direct MP4 Video URL -->
+            <div class="form-group">
+                <label>📁 অথবা সরাসরি MP4 ভিডিও ফাইলের লিঙ্ক (Direct MP4 URL):</label>
+                <input type="url" id="inp-mp4-url" class="form-control" placeholder="https://yourdomain.com/video.mp4">
+            </div>
+
+            <div class="form-group">
+                <label>ভিডিওর শিরোনাম (Video Title):</label>
                 <input type="text" id="inp-video-title" class="form-control">
             </div>
+
             <div class="grid-2">
                 <div class="form-group">
                     <label>চ্যানেলের নাম (Channel Name):</label>
                     <input type="text" id="inp-channel-name" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label>ভিডিওর সময়কাল (Duration e.g. 45:20):</label>
+                    <label>সময়কাল (Duration e.g. 45:20 অথবা LIVE):</label>
                     <input type="text" id="inp-duration" class="form-control">
                 </div>
             </div>
-            <div class="grid-2">
-                <div class="form-group">
-                    <label>ভিডিও থাম্বনেইল ছবির লিংক (Thumbnail Image URL):</label>
-                    <input type="url" id="inp-thumb-url" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>টেলিগ্রাম ভিআইপি গ্রুপ লিঙ্ক:</label>
-                    <input type="url" id="inp-telegram" class="form-control">
-                </div>
+
+            <div class="form-group">
+                <label>ভিডিও থাম্বনেইল ছবির লিঙ্ক (Thumbnail Image URL):</label>
+                <input type="url" id="inp-thumb-url" class="form-control">
             </div>
         </div>
 
@@ -420,12 +450,15 @@
             document.getElementById("inp-bot-banner-img").value = activeConfig.personalAds?.bottomBanner?.imageUrl || "";
             document.getElementById("inp-bot-banner-target").value = activeConfig.personalAds?.bottomBanner?.targetUrl || "";
 
-            // 4. Video Details
+            // 4. Video Details & Real Playback
+            document.getElementById("inp-playback-mode").value = activeConfig.video?.playbackMode || "youtube";
+            document.getElementById("inp-is-live").value = activeConfig.video?.isLive === false ? "false" : "true";
+            document.getElementById("inp-youtube-url").value = activeConfig.video?.youtubeUrl || "";
+            document.getElementById("inp-mp4-url").value = activeConfig.video?.mp4Url || "";
             document.getElementById("inp-video-title").value = activeConfig.video?.title || "";
             document.getElementById("inp-channel-name").value = activeConfig.video?.channelName || "";
             document.getElementById("inp-duration").value = activeConfig.video?.duration || "45:20";
             document.getElementById("inp-thumb-url").value = activeConfig.video?.thumbnailUrl || "";
-            document.getElementById("inp-telegram").value = activeConfig.telegram?.url || "";
 
             // Test Direct Link Button
             document.getElementById("btn-test-direct").addEventListener("click", function () {
@@ -464,15 +497,16 @@
                 activeConfig.personalAds.bottomBanner.imageUrl = document.getElementById("inp-bot-banner-img").value.trim();
                 activeConfig.personalAds.bottomBanner.targetUrl = document.getElementById("inp-bot-banner-target").value.trim();
 
-                // Video
+                // Video & Playback
+                if (!activeConfig.video) activeConfig.video = {};
+                activeConfig.video.playbackMode = document.getElementById("inp-playback-mode").value;
+                activeConfig.video.isLive = document.getElementById("inp-is-live").value === "true";
+                activeConfig.video.youtubeUrl = document.getElementById("inp-youtube-url").value.trim();
+                activeConfig.video.mp4Url = document.getElementById("inp-mp4-url").value.trim();
                 activeConfig.video.title = document.getElementById("inp-video-title").value.trim();
                 activeConfig.video.channelName = document.getElementById("inp-channel-name").value.trim();
                 activeConfig.video.duration = document.getElementById("inp-duration").value.trim();
                 activeConfig.video.thumbnailUrl = document.getElementById("inp-thumb-url").value.trim();
-
-                // Telegram
-                if (!activeConfig.telegram) activeConfig.telegram = { enabled: true };
-                activeConfig.telegram.url = document.getElementById("inp-telegram").value.trim();
 
                 localStorage.setItem("SMARTVIDEO_CONFIG", JSON.stringify(activeConfig));
 

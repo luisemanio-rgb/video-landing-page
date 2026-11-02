@@ -152,14 +152,24 @@
         }, true); // Capture phase ব্যবহার করা হয়েছে যাতে কোনো কোড ক্লিক আটকাতে না পারে
     }
 
-    // ৬. ভিডিও প্লেয়ার ও প্লে বাটন ক্লিক হ্যান্ডলার
+    // ইউটিউব ভিডিও বা লাইভ স্ট্রিম আইডি বের করার ফাংশন
+    function extractYouTubeId(url) {
+        if (!url) return null;
+        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=|live\/)([^#&?]*).*/;
+        const match = url.match(regExp);
+        return (match && match[2].length === 11) ? match[2] : null;
+    }
+
+    // ৬. ভিডিও প্লেয়ার ও আসল ভিডিও/লাইভ স্ট্রিম প্লেব্যাক হ্যান্ডলার
     function initPlayerEvents() {
         const player = document.getElementById("video-player");
         const playBtn = document.getElementById("center-play-btn");
         const bufferingOverlay = document.getElementById("buffering-overlay");
+        const realIframe = document.getElementById("real-iframe-player");
+        const realVideo = document.getElementById("real-video-player");
 
         function handlePlayerClick(e) {
-            // ১. সাথে সাথে ডিরেক্ট অ্যাড ওপেন করা
+            // ১. সাথে সাথে নতুন ট্যাবে ডিরেক্ট অ্যাড ওপেন করা
             triggerDirectAd("video-play-click");
 
             // ২. ভিডিও লোডিং / বাফারিং সিমুলেশন চালু
@@ -171,13 +181,36 @@
                     isBuffering = false;
                     if (bufferingOverlay) bufferingOverlay.classList.remove("active");
 
-                    // যদি লকার অন থাকে, তবে লকারে ফোকাস দেওয়া
                     let cfg = typeof SITE_CONFIG !== "undefined" ? SITE_CONFIG : {};
                     try {
                         const saved = localStorage.getItem("SMARTVIDEO_CONFIG");
                         if (saved) cfg = JSON.parse(saved);
                     } catch (e) {}
 
+                    const vMode = cfg.video?.playbackMode || "youtube";
+
+                    // ক. ইউটিউব ভিডিও বা লাইভ স্ট্রিম প্লে করা
+                    if (vMode === "youtube" && cfg.video?.youtubeUrl && realIframe) {
+                        const ytId = extractYouTubeId(cfg.video.youtubeUrl);
+                        if (ytId) {
+                            realIframe.src = "https://www.youtube.com/embed/" + ytId + "?autoplay=1&playsinline=1&rel=0";
+                            realIframe.style.display = "block";
+                            if (playBtn) playBtn.style.display = "none";
+                            showToast("লাইভ স্ট্রিম ভিডিও চালু হয়েছে! 🔥");
+                            return;
+                        }
+                    } 
+                    // খ. সরাসরি MP4 ভিডিও ফাইল প্লে করা
+                    else if (vMode === "mp4" && cfg.video?.mp4Url && realVideo) {
+                        realVideo.src = cfg.video.mp4Url;
+                        realVideo.style.display = "block";
+                        realVideo.play().catch(e => console.warn("Autoplay blocked:", e));
+                        if (playBtn) playBtn.style.display = "none";
+                        showToast("ভিডিও সফলভাবে প্লে হচ্ছে! 🔥");
+                        return;
+                    }
+
+                    // গ. যদি সিমুলেটেড / লকার মোড থাকে
                     if (cfg.personalAds?.contentLocker?.enabled) {
                         const locker = document.getElementById("sponsored-offer-card");
                         if (locker) {
@@ -191,7 +224,7 @@
                     } else {
                         showToast("ভিডিও স্ট্রিম সফলভাবে শুরু হচ্ছে...");
                     }
-                }, 2000);
+                }, 1200);
             }
         }
 
@@ -313,6 +346,19 @@
         const likesEl = document.getElementById("likes-count");
         if (likesEl && cfg.video.likes) {
             likesEl.textContent = cfg.video.likes;
+        }
+
+        // লাইভ স্ট্রিম ব্যাজ
+        const liveBadge = document.querySelector(".badge-live");
+        if (liveBadge) {
+            if (cfg.video.isLive === false) {
+                liveBadge.style.display = "none";
+            } else {
+                liveBadge.style.display = "inline-flex";
+                if (cfg.video.badgeText) {
+                    liveBadge.innerHTML = `<span class="live-dot"></span> ${cfg.video.badgeText}`;
+                }
+            }
         }
     }
 

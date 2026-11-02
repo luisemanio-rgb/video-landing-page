@@ -15,17 +15,28 @@ const SITE_CONFIG = {
         headerTicker: "🔥 হট আপডেট: আজকের সবচেয়ে ভাইরাল ভিডিওটি দেখতে নিচে ক্লিক করুন!",
     },
 
-    // ভিডিওর তথ্য
+    // ভিডিওর তথ্য ও আসল প্লেব্যাক সেটিংস
     video: {
+        // প্লেব্যাক মোড: 'youtube' | 'mp4' | 'simulated' (ফেক/শুধু অ্যাড)
+        playbackMode: "youtube",
+        
+        // ১. ইউটিউব ভিডিও বা লাইভ স্ট্রিম লিঙ্ক (YouTube Video / Live Stream URL)
+        youtubeUrl: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
+
+        // ২. সরাসরি MP4 ভিডিও বা স্ট্রিম লিঙ্ক (Direct MP4 URL)
+        mp4Url: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+
+        // লাইভ স্ট্রিম ও ব্যাজ
+        isLive: true,
+        badgeText: "🔴 LIVE STREAM",
+        qualityText: "4K ULTRA HD",
+
         title: "Viral Premium Video - Exclusive Full Uncensored Leak 2026",
         channelName: "Studio Official",
         isVerified: true,
         views: "1.8M Views",
         timeAgo: "2 hours ago",
         duration: "45:20",
-        isLive: true,
-        badgeText: "🔴 LIVE STREAM",
-        qualityText: "4K ULTRA HD",
         thumbnailUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=1280&q=80",
         likes: "128K",
         shares: "24.5K",
