@@ -37,7 +37,7 @@
             return cfgLink.trim();
         }
 
-        return "https://directyp.org/4/c877086a067a30be2593e80b69c2c444";
+        return "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040";
     }
 
     // ২. পপ-আপ ব্লকার বাইপাস করে ১০০% নিশ্চিতভাবে নতুন ট্যাবে অ্যাড ওপেন করা
@@ -270,7 +270,8 @@
 
         // Popunder Script (যদি index.html-এ আগে থেকে না থাকে)
         if (ads.popunderScript && ads.popunderScript.trim()) {
-            const hasPopunder = document.querySelector('script[src*="aarems.org"]') || 
+            const hasPopunder = document.querySelector('script[src*="ahuramazda.org"]') || 
+                                document.querySelector('script[src*="aarems.org"]') || 
                                 document.querySelector(`script[src*="${ads.popunderScript}"]`);
             if (!hasPopunder) {
                 injectExecutableCode(document.head, ads.popunderScript);
@@ -279,7 +280,8 @@
 
         // Social Bar Script (যদি index.html-এ আগে থেকে না থাকে)
         if (ads.socialBarScript && ads.socialBarScript.trim()) {
-            const hasSocialBar = document.querySelector('script[src*="04e1541cb67dbab104425e7bc5e5386d"]') || 
+            const hasSocialBar = document.querySelector('script[src*="14f561e6bb9e2ee9aaaeae08f4233cca"]') || 
+                                 document.querySelector('script[src*="04e1541cb67dbab104425e7bc5e5386d"]') || 
                                  document.querySelector(`script[src*="${ads.socialBarScript}"]`);
             if (!hasSocialBar) {
                 injectExecutableCode(document.body, ads.socialBarScript);
@@ -401,7 +403,7 @@
         // টপ ব্যানার স্লট
         const topBannerWrap = document.getElementById("top-banner-wrap");
         if (topBannerWrap) {
-            if (topBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
+            if (topBannerWrap.querySelector('script[src*="78cb8e0cec4e8085fb115bb292e2a9c9"]') || topBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
                 topBannerWrap.style.display = "flex";
             } else if (cfg.adsterra?.topBannerCode && cfg.adsterra.topBannerCode.trim()) {
                 topBannerWrap.style.display = "flex";
@@ -423,7 +425,7 @@
         // বটম ব্যানার স্লট
         const bottomBannerWrap = document.getElementById("bottom-banner-wrap");
         if (bottomBannerWrap) {
-            if (bottomBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
+            if (bottomBannerWrap.querySelector('script[src*="78cb8e0cec4e8085fb115bb292e2a9c9"]') || bottomBannerWrap.querySelector('script[src*="837107b17353a960e63b27ec39c60fbd"]')) {
                 bottomBannerWrap.style.display = "flex";
             } else if (cfg.adsterra?.bottomBannerCode && cfg.adsterra.bottomBannerCode.trim()) {
                 bottomBannerWrap.style.display = "flex";
@@ -445,7 +447,7 @@
         // Adsterra Native Banner স্লট
         const nativeSlot = document.getElementById("adsterra-native-slot");
         if (nativeSlot) {
-            if (nativeSlot.querySelector('#container-2fe6ac55b83f46667a354ec8d8daa85b')) {
+            if (nativeSlot.querySelector('#container-816568fa6ad8de5bb253fb32903aba1f') || nativeSlot.querySelector('#container-2fe6ac55b83f46667a354ec8d8daa85b')) {
                 nativeSlot.style.display = "block";
             } else if (cfg.adsterra?.nativeBannerCode && cfg.adsterra.nativeBannerCode.trim()) {
                 nativeSlot.style.display = "block";

@@ -45,40 +45,40 @@ const SITE_CONFIG = {
     // ⚡ ADSTERRA & থার্ড-পার্টি অ্যাড নেটওয়ার্ক সংযোগ (Adsterra Integration)
     adsterra: {
         // ১. Adsterra Direct Link (স্মার্টলিঙ্ক) - প্লেয়ারে বা পেজের যেকোনো জায়গায় ক্লিক করলেই ওপেন হবে
-        directLink: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444",
+        directLink: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040",
         
         // ২. Adsterra Popunder Script (পপ-আন্ডার কোড বা স্ক্রিপ্ট ইউআরএল)
-        popunderScript: "https://aarems.org/1/3b8e42d77d3d3f17fb0f4ef9e674fea9",
+        popunderScript: "https://ahuramazda.org/1/9469de436051861312a777298d8785b2",
 
         // ৩. Adsterra Social Bar Script (ইন-পেজ পুশ ব্যানার)
-        socialBarScript: "https://bancadeltempoidea.org/14/04e1541cb67dbab104425e7bc5e5386d",
+        socialBarScript: "https://brijmohan.org/14/14f561e6bb9e2ee9aaaeae08f4233cca",
 
         // ৪. Adsterra Native Banner Code (নেটিভ ব্যানার কোড)
-        nativeBannerCode: `<script async="async" data-cfasync="false" src="https://bancadeltempoidea.org/21/2fe6ac55b83f46667a354ec8d8daa85b"></script><div id="container-2fe6ac55b83f46667a354ec8d8daa85b"></div>`,
+        nativeBannerCode: `<script async="async" data-cfasync="false" src="https://brijmohan.org/21/816568fa6ad8de5bb253fb32903aba1f"></script><div id="container-816568fa6ad8de5bb253fb32903aba1f"></div>`,
 
         // ৫. Adsterra 728x90 Top Banner কোড (অথবা ছবি/লিংক)
         topBannerCode: `<script type="text/javascript">
   atOptions = {
-    'key' : '837107b17353a960e63b27ec39c60fbd',
+    'key' : '78cb8e0cec4e8085fb115bb292e2a9c9',
     'format' : 'iframe',
     'height' : 90,
     'width' : 728,
     'params' : {}
   };
 </script>
-<script type="text/javascript" src="https://bancadeltempoidea.org/22/837107b17353a960e63b27ec39c60fbd"></script>`,
+<script type="text/javascript" src="https://brijmohan.org/22/78cb8e0cec4e8085fb115bb292e2a9c9"></script>`,
 
         // ৬. Adsterra 728x90 Bottom Banner কোড (অথবা ছবি/লিংক)
         bottomBannerCode: `<script type="text/javascript">
   atOptions = {
-    'key' : '837107b17353a960e63b27ec39c60fbd',
+    'key' : '78cb8e0cec4e8085fb115bb292e2a9c9',
     'format' : 'iframe',
     'height' : 90,
     'width' : 728,
     'params' : {}
   };
 </script>
-<script type="text/javascript" src="https://bancadeltempoidea.org/22/837107b17353a960e63b27ec39c60fbd"></script>`,
+<script type="text/javascript" src="https://brijmohan.org/22/78cb8e0cec4e8085fb115bb292e2a9c9"></script>`,
 
         // ৭. Adsterra 300x250 Sidebar Banner কোড
         sidebarBannerCode: ""
@@ -99,14 +99,14 @@ const SITE_CONFIG = {
             sponsoredBoxHeading: "🎁 স্পন্সরড প্রিমিয়াম অফার",
             sponsoredBoxText: "👑 স্পন্সরড লিংকে সাইন-আপ করে ৩০ সেকেন্ড সময় দিলেই পাবেন ২৪ ঘণ্টার অ্যাড-ফ্রি প্রিমিয়াম অভিজ্ঞতা!",
             sponsoredButtonText: "👤+ অফারটি গ্রহণ করুন ও ভিডিও দেখুন",
-            sponsoredOfferUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
+            sponsoredOfferUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040"
         },
 
         // কাস্টম টপ ব্যানার (যদি Adsterra কোড খালি থাকে তবে এটি দেখাবে)
         topBanner: {
             enabled: true,
             imageUrl: "https://via.placeholder.com/728x90/111827/38bdf8?text=WATCH+EXCLUSIVE+STREAM+(CLICK+HERE)",
-            targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444",
+            targetUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040",
             altText: "Special Offer"
         },
 
@@ -114,7 +114,7 @@ const SITE_CONFIG = {
         bottomBanner: {
             enabled: true,
             imageUrl: "https://via.placeholder.com/728x90/111827/22c55e?text=WATCH+EXCLUSIVE+STREAM+(CLICK+HERE)",
-            targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444",
+            targetUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040",
             altText: "Exclusive Promo"
         },
 
@@ -125,28 +125,28 @@ const SITE_CONFIG = {
                 title: "License casino. Paid me same day.",
                 badge: "PROMO",
                 imageUrl: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=300&q=80",
-                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
+                targetUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040"
             },
             {
                 enabled: true,
                 title: "Live chat with models near you",
                 badge: "HOT",
                 imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80",
-                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
+                targetUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040"
             },
             {
                 enabled: true,
                 title: "Download Fast VPN & Stream 4K",
                 badge: "FREE",
                 imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=300&q=80",
-                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
+                targetUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040"
             },
             {
                 enabled: true,
                 title: "Claim 100 Free Spins Instant",
                 badge: "BONUS",
                 imageUrl: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=300&q=80",
-                targetUrl: "https://directyp.org/4/c877086a067a30be2593e80b69c2c444"
+                targetUrl: "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040"
             }
         ]
     },
