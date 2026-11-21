@@ -37,7 +37,7 @@
             return cfgLink.trim();
         }
 
-        return "https://auctionr.org/4/171e880527a9682ec753a7d4308e9801";
+        return "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f";
     }
 
     // ২. পপ-আপ ব্লকার বাইপাস করে ১০০% নিশ্চিতভাবে নতুন ট্যাবে অ্যাড ওপেন করা
