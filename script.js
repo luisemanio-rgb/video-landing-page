@@ -37,7 +37,7 @@
             return cfgLink.trim();
         }
 
-        return "https://asiaso.org/4/5d85f140ebde71b87a32b314bbb2e040";
+        return "https://auctionr.org/4/171e880527a9682ec753a7d4308e9801";
     }
 
     // ২. পপ-আপ ব্লকার বাইপাস করে ১০০% নিশ্চিতভাবে নতুন ট্যাবে অ্যাড ওপেন করা
@@ -447,14 +447,13 @@
         // Adsterra Native Banner স্লট
         const nativeSlot = document.getElementById("adsterra-native-slot");
         if (nativeSlot) {
-            if (nativeSlot.querySelector('#container-816568fa6ad8de5bb253fb32903aba1f') || nativeSlot.querySelector('#container-2fe6ac55b83f46667a354ec8d8daa85b')) {
-                nativeSlot.style.display = "block";
-            } else if (cfg.adsterra?.nativeBannerCode && cfg.adsterra.nativeBannerCode.trim()) {
+            if (cfg.adsterra?.nativeBannerCode && cfg.adsterra.nativeBannerCode.trim()) {
                 nativeSlot.style.display = "block";
                 nativeSlot.innerHTML = "";
                 injectExecutableCode(nativeSlot, cfg.adsterra.nativeBannerCode);
             } else {
                 nativeSlot.style.display = "none";
+                nativeSlot.innerHTML = "";
             }
         }
 
