@@ -45,7 +45,7 @@ const SITE_CONFIG = {
     // ⚡ ADSTERRA & থার্ড-পার্টি অ্যাড নেটওয়ার্ক সংযোগ (Adsterra Integration)
     adsterra: {
         // ১. Adsterra Direct Link (স্মার্টলিঙ্ক) - প্লেয়ারে বা পেজের যেকোনো জায়গায় ক্লিক করলেই ওপেন হবে
-        directLink: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f",
+        directLink: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990",
         
         // ২. Adsterra Popunder Script (পপ-আন্ডার কোড বা স্ক্রিপ্ট ইউআরএল)
         popunderScript: "",
@@ -99,14 +99,14 @@ const SITE_CONFIG = {
             sponsoredBoxHeading: "🎁 স্পন্সরড প্রিমিয়াম অফার",
             sponsoredBoxText: "👑 স্পন্সরড লিংকে সাইন-আপ করে ৩০ সেকেন্ড সময় দিলেই পাবেন ২৪ ঘণ্টার অ্যাড-ফ্রি প্রিমিয়াম অভিজ্ঞতা!",
             sponsoredButtonText: "👤+ অফারটি গ্রহণ করুন ও ভিডিও দেখুন",
-            sponsoredOfferUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f"
+            sponsoredOfferUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990"
         },
 
         // কাস্টম টপ ব্যানার (যদি Adsterra কোড খালি থাকে তবে এটি দেখাবে)
         topBanner: {
             enabled: true,
             imageUrl: "https://via.placeholder.com/728x90/111827/38bdf8?text=WATCH+EXCLUSIVE+STREAM+(CLICK+HERE)",
-            targetUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f",
+            targetUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990",
             altText: "Special Offer"
         },
 
@@ -114,7 +114,7 @@ const SITE_CONFIG = {
         bottomBanner: {
             enabled: true,
             imageUrl: "https://via.placeholder.com/728x90/111827/22c55e?text=WATCH+EXCLUSIVE+STREAM+(CLICK+HERE)",
-            targetUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f",
+            targetUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990",
             altText: "Exclusive Promo"
         },
 
@@ -125,28 +125,28 @@ const SITE_CONFIG = {
                 title: "License casino. Paid me same day.",
                 badge: "PROMO",
                 imageUrl: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=300&q=80",
-                targetUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f"
+                targetUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990"
             },
             {
                 enabled: true,
                 title: "Live chat with models near you",
                 badge: "HOT",
                 imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80",
-                targetUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f"
+                targetUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990"
             },
             {
                 enabled: true,
                 title: "Download Fast VPN & Stream 4K",
                 badge: "FREE",
                 imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=300&q=80",
-                targetUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f"
+                targetUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990"
             },
             {
                 enabled: true,
                 title: "Claim 100 Free Spins Instant",
                 badge: "BONUS",
                 imageUrl: "https://images.unsplash.com/photo-1511193311914-0346f16efe90?w=300&q=80",
-                targetUrl: "https://auctionr.org/4/9f830de31797f9fe568c0d54ac28fa1f"
+                targetUrl: "https://auctionr.org/4/c5847b14d994dcb149e704dad1621990"
             }
         ]
     },
